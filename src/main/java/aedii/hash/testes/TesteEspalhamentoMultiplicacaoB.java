@@ -1,0 +1,20 @@
+package aedii.hash.testes;
+
+import aedii.hash.utils.HashTableUtils;
+import java.io.IOException;
+
+public class TesteEspalhamentoMultiplicacaoB {
+
+    public static void main(String[] args) throws IOException {
+
+        final int M_A_200 = 200;
+        final float A_0618 = 0.61803398875f;
+        int[] vetor = new int[M_A_200];
+
+        for (int i = 1; i <= 500000; i++) {
+            int posicao = HashTableUtils.espalhamentoMultiplicacao(i, M_A_200, A_0618);
+            vetor[posicao]++;
+        }
+        HashTableUtils.criaCsvContagemColisoes("colisao_espalhamento_multiplicacao_B.csv", vetor);
+    }
+}
